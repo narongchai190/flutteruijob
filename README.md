@@ -1,6 +1,15 @@
 # joblistingui
 
 A new Flutter project.
+<table>
+    <td>
+    <h4>User FLow Screens<h4>     
+        <div align="center" style="background-color:grey">
+           <img src="/assets/1.png" width="250px",height="200px"</img> 
+            <img src="/assets/2.png" width="250px",height="200px"</img> 
+        </div> 
+    </td>
+</table>
 
 ## Getting Started
 
