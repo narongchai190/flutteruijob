@@ -1,7 +1,9 @@
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:joblistingui/provider/tap_provider.dart';
 import 'package:joblistingui/screens/home_page.dart';
+import 'package:provider/provider.dart';
 
 class MainPage extends StatefulWidget {
   @override
@@ -9,7 +11,6 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  int _currentIndex = 0;
   PageController _pageController;
 
   @override
@@ -26,27 +27,33 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<TapProvider>(context);
     return Scaffold(
       body: SizedBox.expand(
         child: PageView(
           controller: _pageController,
           onPageChanged: (index) {
-            setState(() => _currentIndex = index);
+            // setState(() => _currentIndex = index);
+            provider.currentIndex;
           },
           children: <Widget>[
             MyHomePage(),
             MyHomePage(),
             MyHomePage(),
-            MyHomePage(),
+            Container(
+              color: Colors.amberAccent,
+            ),
+            // MyHomePage(),
             // MyHomePage(),
           ],
         ),
       ),
       bottomNavigationBar: BottomNavyBar(
         // backgroundColor: Color(0xFF1F88A0),
-        selectedIndex: _currentIndex,
+        selectedIndex: provider.currentIndex,
         onItemSelected: (index) {
-          setState(() => _currentIndex = index);
+          // setState(() => _currentIndex = index);
+          provider.currentIndex = index;
           _pageController.jumpToPage(index);
         },
         items: <BottomNavyBarItem>[
